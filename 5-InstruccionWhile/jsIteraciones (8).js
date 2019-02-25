@@ -4,24 +4,31 @@ function Mostrar()
 	var contador=0;
 	var positivo=0;
 	var negativo=1;
-	var i=0;
 	var numero;
-	
-	var respuesta='si';
-	i=prompt("Ingrese la cantidad de numeros que desea operar");
+	var flag=0;
+	var respuesta;
 
-while(contador<i){
-	numero=parseFloat(prompt("Ingrese un numero"));
-		if(numero>0){
-			positivo=positivo+numero;
+	do{
+		numero=parseInt(prompt("Ingrese un numero"));
+			if( numero>=0){
+			positivo+=numero;
 		}
-		else{
+			else{
 			negativo=negativo*numero;
-		}
-		contador++;
-}
+			flag=1;
+	}
+
+		respuesta=confirm("Quiere seguir agregando numeros?");
+
+
+	}while(respuesta);
+	
+
 
 document.getElementById('suma').value=positivo;
+if(flag=0){
+	negativo=0;
+}
 document.getElementById('producto').value=negativo;
 
 }//FIN DE LA FUNCIÓN
